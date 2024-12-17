@@ -29,15 +29,31 @@ public class Relay
     
     public void Activate()
     {
-        Gpio.ClosePin(Pin);
-        Gpio.OpenPin(Pin, PinMode.Output);
-        Gpio.Write(Pin, PinValue.High);
+        try
+        {
+            Gpio.ClosePin(Pin);
+            Gpio.OpenPin(Pin, PinMode.Output);
+            Gpio.Write(Pin, PinValue.High);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+        Console.WriteLine($"{Name} is now active");
     }
     
     public void Deactivate()
     {
-        Gpio.ClosePin(Pin);
-        Gpio.OpenPin(Pin, PinMode.Input);
+        try
+        {
+            Gpio.ClosePin(Pin);
+            Gpio.OpenPin(Pin, PinMode.Input);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+        Console.WriteLine($"{Name} is now inactive");
     }
     
     public void Toggle()
@@ -55,6 +71,14 @@ public class Relay
     
     public bool Status()
     {
-        return Gpio.GetPinMode(Pin) == PinMode.Output;
+        try
+        {
+            return Gpio.GetPinMode(Pin) == PinMode.Output;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return false;
+        }
     }
 }
