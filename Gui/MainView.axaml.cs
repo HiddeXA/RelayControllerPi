@@ -7,6 +7,7 @@ using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.Media;
 using Gui.Commands;
+using Gui.Commands.Args;
 using Library;
 using Projektanker.Icons.Avalonia;
 
@@ -62,14 +63,15 @@ public partial class MainView : UserControl
                         },
                     },
                     Orientation = Orientation.Vertical,
-                    
+
                 },
                 [Grid.ColumnProperty] = Relays.IndexOf(relay) % 6,
                 [Grid.RowProperty] = Relays.IndexOf(relay) / 6,
+                Transitions = null,
             };
             if (relay is ToggleRelay)
             {
-                button.CommandParameter = relay;
+                button.CommandParameter = new RelayCommandArgs(relay, button);
                 button.Command = new RelayCommand();
             }
 
