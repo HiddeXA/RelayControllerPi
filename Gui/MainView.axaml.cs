@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -21,28 +24,22 @@ public partial class MainView : UserControl
         InitializeComponent();
         Cursor = new Cursor(StandardCursorType.None);
 
-        Relays = new List<Relay>
+        var options = new JsonSerializerOptions
         {
-            new ToggleRelay(17, "Relay 1", "fa-solid fa-car"),
-            new ToggleRelay(18, "Relay 2", "fa-solid fa-beer-mug-empty"),
-            new ToggleRelay(27, "Relay 3", "fa-solid fa-battery-empty"),
-            new ToggleRelay(22, "Relay 4", "fa-solid fa-joint"),
-            new ToggleRelay(23, "Relay 5", "fa-brands fa-playstation"),
-            new ToggleRelay(24, "Relay 6", "fa-solid fa-robot"),
-            new ToggleRelay(25, "Relay 7", "fa-solid fa-rocket"),
-            new ToggleRelay(5, "Relay 8", "fa-solid fa-satellite-dish"),
-            new ToggleRelay(6, "Relay 9", "fa-solid fa-umbrella-beach"),
-            new ToggleRelay(12, "Relay 10", "fa-solid fa-wheelchair-move"),
-            new ToggleRelay(13, "Relay 11", "fa-solid fa-wifi"),
-            new ToggleRelay(19, "Relay 12", "fa-solid fa-wind"),
-            new ToggleRelay(16, "Relay 13", "fa-solid fa-wine-bottle"),
-            new ToggleRelay(26, "Relay 14", "fa-solid fa-wine-glass"),
-            new ToggleRelay(20, "Relay 15", "fa-solid fa-wrench"),
-            new HoldRelay(21, "Relay 16", "fa-solid fa-yin-yang"),
+            PropertyNameCaseInsensitive = true,
+            Converters = { new JsonStringEnumConverter() }
         };
 
+        string json = File.ReadAllText("relays.json");
+        var relays = JsonSerializer.Deserialize<List<Relay>>(json, options);
+
+        foreach (var relay in relays)
+        {
+            Console.WriteLine($"{relay.Name} - GPIO: {relay.Pin} - Type: {relay.ButtonType} - icon: {relay.Icon}");
+        }
+
         ButtonsGrid.Children.Clear();
-        foreach (var relay in Relays)
+        foreach (var relay in relays)
         {
             Button button = new Button
             {
@@ -65,27 +62,22 @@ public partial class MainView : UserControl
                     Orientation = Orientation.Vertical,
 
                 },
-                [Grid.ColumnProperty] = Relays.IndexOf(relay) % 6,
-                [Grid.RowProperty] = Relays.IndexOf(relay) / 6,
+                [Grid.ColumnProperty] = relays.IndexOf(relay) % 6,
+                [Grid.RowProperty] = relays.IndexOf(relay) / 6,
                 Transitions = null,
             };
-            if (relay is ToggleRelay)
+            if (relay.ButtonType == Relay.buttonType.Toggle)
             {
                 button.CommandParameter = new RelayCommandArgs(relay, button);
                 button.Command = new RelayCommand();
             }
 
-            if (relay is HoldRelay)
+            if (relay.ButtonType == Relay.buttonType.Hold)
             {
                 button.AddHandler(Button.PointerPressedEvent, (sender, e) => { relay.Activate(); }, handledEventsToo: true);
                 button.AddHandler(Button.PointerReleasedEvent, (sender, e) => { relay.Deactivate(); }, handledEventsToo: true);
             }
             ButtonsGrid.Children.Add(button);
         }
-
-
     }
-
-   
-    
 }

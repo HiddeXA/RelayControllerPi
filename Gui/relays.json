@@ -1,0 +1,18 @@
+[
+  { "Pin": 17, "Name": "Relay 1", "Icon": "fa-solid fa-car", "ButtonType": "Toggle" },
+  { "Pin": 18, "Name": "Relay 2", "Icon": "fa-solid fa-beer-mug-empty", "ButtonType": "Toggle" },
+  { "Pin": 27, "Name": "Relay 3", "Icon": "fa-solid fa-battery-empty", "ButtonType": "Toggle" },
+  { "Pin": 22, "Name": "Relay 4", "Icon": "fa-solid fa-joint", "ButtonType": "Toggle" },
+  { "Pin": 23, "Name": "Relay 5", "Icon": "fa-brands fa-playstation", "ButtonType": "Toggle" },
+  { "Pin": 24, "Name": "Relay 6", "Icon": "fa-solid fa-robot", "ButtonType": "Toggle" },
+  { "Pin": 25, "Name": "Relay 7", "Icon": "fa-solid fa-rocket", "ButtonType": "Toggle" },
+  { "Pin": 5, "Name": "Relay 8", "Icon": "fa-solid fa-satellite-dish", "ButtonType": "Toggle" },
+  { "Pin": 6, "Name": "Relay 9", "Icon": "fa-solid fa-umbrella-beach", "ButtonType": "Toggle" },
+  { "Pin": 12, "Name": "Relay 10", "Icon": "fa-solid fa-wheelchair-move", "ButtonType": "Toggle" },
+  { "Pin": 13, "Name": "Relay 11", "Icon": "fa-solid fa-wifi", "ButtonType": "Toggle" },
+  { "Pin": 19, "Name": "Relay 12", "Icon": "fa-solid fa-wind", "ButtonType": "Toggle" },
+  { "Pin": 16, "Name": "Relay 13", "Icon": "fa-solid fa-wine-bottle", "ButtonType": "Toggle" },
+  { "Pin": 26, "Name": "Relay 14", "Icon": "fa-solid fa-wine-glass", "ButtonType": "Toggle" },
+  { "Pin": 20, "Name": "Relay 15", "Icon": "fa-solid fa-wrench", "ButtonType": "Toggle" },
+  { "Pin": 21, "Name": "Relay 16", "Icon": "fa-solid fa-yin-yang", "ButtonType": "Hold" }
+]

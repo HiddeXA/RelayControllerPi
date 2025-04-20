@@ -8,14 +8,22 @@ public class Relay
     public string Name { get; set; }
     
     public string Icon { get; set; }
+    
+    public buttonType ButtonType { get; set; }
+    public enum buttonType
+    {
+        Toggle,
+        Hold
+    }
 
     private GpioController Gpio;
     
-    public Relay(int pin, string name, string icon)
+    public Relay(int pin, string name, string icon, buttonType buttonType)
     {
         Pin = pin;
         Name = name;
         Icon = icon;
+        ButtonType = buttonType;
         try
         {
             Gpio = new GpioController();
