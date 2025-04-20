@@ -6,9 +6,7 @@ public class Relay
 {
     public int Pin { get; set; }
     public string Name { get; set; }
-    
     public string Icon { get; set; }
-    
     public buttonType ButtonType { get; set; }
     public enum buttonType
     {

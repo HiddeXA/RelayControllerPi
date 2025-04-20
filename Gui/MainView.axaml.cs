@@ -35,12 +35,6 @@ public partial class MainView : UserControl
 
         foreach (var relay in relays)
         {
-            Console.WriteLine($"{relay.Name} - GPIO: {relay.Pin} - Type: {relay.ButtonType} - icon: {relay.Icon}");
-        }
-
-        ButtonsGrid.Children.Clear();
-        foreach (var relay in relays)
-        {
             Button button = new Button
             {
                 Content = new WrapPanel
