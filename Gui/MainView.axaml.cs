@@ -30,8 +30,25 @@ public partial class MainView : UserControl
             Converters = { new JsonStringEnumConverter() }
         };
 
-        string json = File.ReadAllText("relays.json");
-        var relays = JsonSerializer.Deserialize<List<Relay>>(json, options);
+        List<Relay> relays = new List<Relay>
+        {
+            new Relay(17, "Relay 1", "fa-solid fa-car", Relay.buttonType.Toggle),
+            new Relay(18, "Relay 2", "fa-solid fa-beer-mug-empty", Relay.buttonType.Toggle),
+            new Relay(27, "Relay 3", "fa-solid fa-battery-empty", Relay.buttonType.Toggle),
+            new Relay(22, "Relay 4", "fa-solid fa-joint", Relay.buttonType.Toggle),
+            new Relay(23, "Relay 5", "fa-brands fa-playstation", Relay.buttonType.Toggle),
+            new Relay(24, "Relay 6", "fa-solid fa-robot", Relay.buttonType.Toggle),
+            new Relay(25, "Relay 7", "fa-solid fa-rocket", Relay.buttonType.Toggle),
+            new Relay(5, "Relay 8", "fa-solid fa-satellite-dish", Relay.buttonType.Toggle),
+            new Relay(6, "Relay 9", "fa-solid fa-umbrella-beach", Relay.buttonType.Toggle),
+            new Relay(12, "Relay 10", "fa-solid fa-wheelchair-move", Relay.buttonType.Toggle),
+            new Relay(13, "Relay 11", "fa-solid fa-wifi", Relay.buttonType.Toggle),
+            new Relay(19, "Relay 12", "fa-solid fa-wind", Relay.buttonType.Toggle),
+            new Relay(16, "Relay 13", "fa-solid fa-wine-bottle", Relay.buttonType.Toggle),
+            new Relay(26, "Relay 14", "fa-solid fa-wine-glass", Relay.buttonType.Toggle),
+            new Relay(20, "Relay 15", "fa-solid fa-wrench", Relay.buttonType.Toggle),
+            new Relay(21, "Relay 16", "fa-solid fa-yin-yang", Relay.buttonType.Toggle),
+        };
 
         foreach (var relay in relays)
         {

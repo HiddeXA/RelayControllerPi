@@ -9,9 +9,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.2.1" />
+        <PackageReference Include="Avalonia" Version="11.2.8" />
         <PackageReference Include="Avalonia.Desktop" Version="11.2.1" />
-        <PackageReference Include="Avalonia.LinuxFramebuffer" Version="11.2.1" />
+        <PackageReference Include="Avalonia.LinuxFramebuffer" Version="11.2.8" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.1" />
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.1" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
@@ -23,12 +23,6 @@
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.4" />
         <PackageReference Include="Projektanker.Icons.Avalonia" Version="9.5.0" />
         <PackageReference Include="Projektanker.Icons.Avalonia.FontAwesome" Version="9.5.0" />
-    </ItemGroup>
-    
-    <ItemGroup>
-        <None Update="relays.json">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
     </ItemGroup>
     
     <ItemGroup>
