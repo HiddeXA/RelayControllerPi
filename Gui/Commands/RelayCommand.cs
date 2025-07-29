@@ -25,7 +25,7 @@ public class RelayCommand : ICommand
             Console.WriteLine("Relay toggled");
             if (args.Relay.Status())
             {
-                args.Button.Background = new SolidColorBrush(Color.Parse("#fca311"));
+                args.Button.Background = new SolidColorBrush(Color.Parse("#00A6FF"));
             }
             else
             {

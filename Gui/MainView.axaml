@@ -5,41 +5,113 @@
              xmlns:i="https://github.com/projektanker/icons.avalonia"
              mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
              x:Class="Gui.MainView">
-    <Grid Background="#1B1B1E" x:Name="ButtonsGrid">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.Styles>
-            <Style Selector="Button">
-                <Setter Property="HorizontalAlignment" Value="Stretch" />
-                <Setter Property="VerticalAlignment" Value="Stretch" />
-                <Setter Property="HorizontalContentAlignment" Value="Center" />
-                <Setter Property="VerticalContentAlignment" Value="Center" />
-                <Setter Property="Background" Value="#373F51" />
-                <Setter Property="Foreground" Value="#D8DBE2" />
-                <Setter Property="Margin" Value="10" />
-                <Setter Property="CornerRadius" Value="10" />
-                <Setter Property="Width" Value="130"></Setter>
-                <Setter Property="Height" Value="130"></Setter>
-            </Style>
-            <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="TextElement.Background" Value="#373F51" />
-                <Setter Property="TextElement.Foreground" Value="#D8DBE2" />
-            </Style>
-        </Grid.Styles>
-        <Border Width="130" Height="130" ClipToBounds="True" CornerRadius="10" BorderBrush="#373F51" Grid.Row="2" Grid.Column="5" >
-            <Image  Source="avares://Gui/Images/Logo.JPG" />
-        </Border>
-
-    </Grid>
+    <StackPanel Background="#1B1B1E">
+        <Grid x:Name="ButtonsGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.Styles>
+                <Style Selector="Button">
+                    <Setter Property="HorizontalAlignment" Value="Stretch" />
+                    <Setter Property="VerticalAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                    <Setter Property="Background" Value="#373F51" />
+                    <Setter Property="Foreground" Value="#D8DBE2" />
+                    <Setter Property="Margin" Value="10" />
+                    <Setter Property="CornerRadius" Value="10" />
+                    <Setter Property="Width" Value="190"></Setter>
+                    <Setter Property="Height" Value="150"></Setter>
+                </Style>
+                <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="TextElement.Background" Value="#373F51" />
+                    <Setter Property="TextElement.Foreground" Value="#D8DBE2" />
+                </Style>
+            </Grid.Styles>
+            <Button Name="PartyButton" Grid.Column="4">
+                <WrapPanel Orientation="Vertical">
+                    <i:Icon Margin="0 0 0 10" FontSize="30" Value="fa-solid fa-star"></i:Icon>
+                    <TextBlock>Party</TextBlock>
+                </WrapPanel>
+            </Button>
+        </Grid>
+        <Rectangle Width="1000" Height="5" Fill="#00A6FF" Margin="0 10"></Rectangle>
+        <DockPanel Height="350" Margin="15 5">
+            <Button DockPanel.Dock="Left" x:Name="AuxPrevButton">
+                <i:Icon Value="fa-solid fa-chevron-left"></i:Icon>
+            </Button>
+            <Grid Width="800" x:Name="AuxGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <!-- <Button Width="200" HorizontalContentAlignment="Left" x:Name="AuxPlayButton"> -->
+                <!--     <TextBlock><TextBlock x:Name="AuxPlayButtonText">hoere lange toeter gvd</TextBlock></TextBlock> -->
+                <!-- </Button> -->
+                <Grid.Styles>
+                    <Style Selector="Button">
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                        <Setter Property="VerticalAlignment" Value="Stretch" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                        <Setter Property="Background" Value="#373F51" />
+                        <Setter Property="Foreground" Value="#D8DBE2" />
+                        <Setter Property="Margin" Value="10" />
+                        <Setter Property="CornerRadius" Value="10" />
+                        <Setter Property="Width" Value="200"></Setter>
+                        <Setter Property="Height" Value="100"></Setter>
+                    </Style>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="TextElement.Background" Value="#373F51" />
+                        <Setter Property="TextElement.Foreground" Value="#D8DBE2" />
+                    </Style>
+                </Grid.Styles>
+            </Grid>
+            <Button DockPanel.Dock="Left" x:Name="AuxNextButton">
+                <i:Icon Value="fa-solid fa-chevron-right"></i:Icon>
+            </Button>
+            <DockPanel.Styles>
+                <Style Selector="Button">
+                    <Setter Property="HorizontalAlignment" Value="Stretch" />
+                    <Setter Property="VerticalAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                    <Setter Property="Background" Value="#373F51" />
+                    <Setter Property="Foreground" Value="#D8DBE2" />
+                    <Setter Property="Margin" Value="10" />
+                    <Setter Property="CornerRadius" Value="10" />
+                    <Setter Property="Width" Value="100"></Setter>
+                    <Setter Property="Height" Value="80"></Setter>
+                </Style>
+                <Style Selector="Button:pointerover /template/ ContentPresenter">
+                    <Setter Property="Background" Value="#373F51" />
+                </Style>
+                <Style Selector="Button:pressed /template/ ContentPresenter">
+                    <Setter Property="Background" Value="#00A6FF" />
+                </Style>
+                <Style Selector="i|Icon">
+                    <Setter Property="FontSize" Value="20"></Setter>
+                    <Setter Property="Foreground" Value="#FFFF"></Setter>
+                </Style>  
+                <Style Selector="TextBlock">
+                    <Setter Property="FontSize" Value="20"></Setter>
+                    <Setter Property="Foreground" Value="#FFFF"></Setter>
+                </Style>
+            </DockPanel.Styles>
+        </DockPanel>
+    </StackPanel>
+   
 </UserControl>

@@ -4,9 +4,10 @@ namespace Library;
 
 public class Relay
 {
-    public int Pin { get; set; }
+    public List<int> Pins { get; set; }
     public string Name { get; set; }
     public string Icon { get; set; }
+    public bool Active { get; set; }
     public buttonType ButtonType { get; set; }
     public enum buttonType
     {
@@ -16,50 +17,64 @@ public class Relay
 
     private GpioController Gpio;
     
-    public Relay(int pin, string name, string icon, buttonType buttonType)
+    public Relay(List<int> pins, string name, string icon, buttonType buttonType)
     {
-        Pin = pin;
+        Active = false;
+        Pins = pins;
         Name = name;
         Icon = icon;
         ButtonType = buttonType;
         try
         {
             Gpio = new GpioController();
-            Gpio.OpenPin(Pin, PinMode.Input);
+            Pins.ForEach(p => Gpio.OpenPin(p, PinMode.Input));
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
         }
+    }
+    
+    public Relay(int pin, string name, string icon, buttonType buttonType) : this(new List<int>(), name, icon, buttonType)
+    {
+        Pins.Add(pin);
     }
     
     public void Activate()
     {
         try
         {
-            Gpio.ClosePin(Pin);
-            Gpio.OpenPin(Pin, PinMode.Output);
-            Gpio.Write(Pin, PinValue.High);
+            foreach (int pin in Pins)
+            {
+                Gpio.ClosePin(pin);
+                Gpio.OpenPin(pin, PinMode.Output);
+                Gpio.Write(pin, PinValue.High);
+            }
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
         }
-        Console.WriteLine($"{Name} is now active");
+
+        Active = true;
     }
     
     public void Deactivate()
     {
         try
         {
-            Gpio.ClosePin(Pin);
-            Gpio.OpenPin(Pin, PinMode.Input);
+            foreach (int pin in Pins)
+            {
+                Gpio.ClosePin(pin);
+                Gpio.OpenPin(pin, PinMode.Input);
+            }
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
         }
-        Console.WriteLine($"{Name} is now inactive");
+        
+        Active = false;
     }
     
     public void Toggle()
@@ -79,7 +94,7 @@ public class Relay
     {
         try
         {
-            return Gpio.GetPinMode(Pin) == PinMode.Output;
+            return Gpio.GetPinMode(Pins.First()) == PinMode.Output;
         }
         catch (Exception e)
         {

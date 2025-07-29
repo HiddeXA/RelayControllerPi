@@ -6,6 +6,7 @@ namespace Library;
 public class AuxController
 {
     private string MountBasePath = "/mnt/usb/";
+    public string LastPlayed { get; set; } = "";
     public Dictionary<string, string> Sounds { get; set; } = new();
     private Player audioPlayer = new ();
 
@@ -48,5 +49,15 @@ public class AuxController
     {
         Console.WriteLine(Sounds[soundName]);
         audioPlayer.Play(Sounds[soundName]);
+    }
+
+    public void StopAllSound()
+    {
+        audioPlayer.Stop();
+    }
+
+    public bool IsPlaying()
+    {
+        return audioPlayer.Playing;
     }
 }
