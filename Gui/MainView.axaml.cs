@@ -49,6 +49,7 @@ public partial class MainView : UserControl
         
         for (int i = start; i < end; i++)
         {
+            int y = i;
             Button button = new Button
             {
                 Content = auxController.Sounds.ElementAt(i).Key,
@@ -59,14 +60,15 @@ public partial class MainView : UserControl
             
             button.AddHandler(Button.ClickEvent, (sender, e) =>
             {
-                if (auxController.LastPlayed == auxController.Sounds.ElementAt(i).Key && auxController.IsPlaying())
+                if (auxController.LastPlayed == auxController.Sounds.ElementAt(y).Key && auxController.IsPlaying())
                 {
                     auxController.StopAllSound();
-                    Background = new SolidColorBrush(Color.Parse("#373F51"));
+                    // Background = new SolidColorBrush(Color.Parse("#373F51"));
                     return;
                 }
-                auxController.PlaySound(auxController.Sounds.ElementAt(i).Key);
-                Background = new SolidColorBrush(Color.Parse("#00A6FF"));
+                Console.WriteLine("3");
+                auxController.PlaySound(auxController.Sounds.ElementAt(y).Key);
+                // Background = new SolidColorBrush(Color.Parse("#00A6FF"));
             });
                 
             AuxGrid.Children.Add(button);
@@ -87,8 +89,8 @@ public partial class MainView : UserControl
         {
             new Relay(new List<int> { 17, 25 }, "Zwaailicht", "fa-solid fa-tower-broadcast", Relay.buttonType.Toggle),
             new Relay(18, "Wisselen Zwaailicht", "fa-solid fa-rotate-right", Relay.buttonType.Hold),
-            new Relay( new List<int> { 27, 22, 23 } , "Groot Light", "fa-solid fa-lightbulb", Relay.buttonType.Toggle),
-            new Relay(24, "Relay 6", "fa-solid fa-robot", Relay.buttonType.Toggle),
+            new Relay( new List<int> { 27, 22, 23, 5 } , "Groot Light", "fa-solid fa-lightbulb", Relay.buttonType.Toggle),
+            new Relay(24, "Sier lighten", "fa-solid fa-bookmark", Relay.buttonType.Toggle),
             // new Relay(5, "Relay 8", "fa-solid fa-satellite-dish", Relay.buttonType.Toggle),
             // new Relay(6, "Relay 9", "fa-solid fa-umbrella-beach", Relay.buttonType.Toggle),
             // new Relay(12, "Relay 10", "fa-solid fa-wheelchair-move", Relay.buttonType.Toggle),
@@ -251,7 +253,8 @@ public partial class MainView : UserControl
             {
                 new Relay(27, "", "", Relay.buttonType.Toggle),
                 new Relay(22, "", "", Relay.buttonType.Toggle),
-                new Relay(23, "", "", Relay.buttonType.Toggle)
+                new Relay(23, "", "", Relay.buttonType.Toggle),
+                new Relay(5, "", "", Relay.buttonType.Toggle)
             },
             new List<Relay>
             {

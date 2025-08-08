@@ -5,7 +5,7 @@ namespace Library;
 
 public class AuxController
 {
-    private string MountBasePath = "/mnt/usb/";
+    private string MountBasePath = "/home/hidde/Relay/";
     public string LastPlayed { get; set; } = "";
     public Dictionary<string, string> Sounds { get; set; } = new();
     private Player audioPlayer = new ();

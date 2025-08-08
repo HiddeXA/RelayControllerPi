@@ -38,6 +38,7 @@ public class Relay
     public Relay(int pin, string name, string icon, buttonType buttonType) : this(new List<int>(), name, icon, buttonType)
     {
         Pins.Add(pin);
+        Gpio.OpenPin(pin, PinMode.Input);
     }
     
     public void Activate()

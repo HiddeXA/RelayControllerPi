@@ -6,7 +6,7 @@ public class PartyController
     public List<Relay> OnRelays { get; set; }
     public List<Relay> SycleRelays { get; set; }
     public bool Active { get; set; }
-    public int SycleDelay = 500;
+    public int SycleDelay = 200;
 
 
     public PartyController(List<Relay> allRelays, List<Relay> sycleRelays, List<Relay> onRelays)

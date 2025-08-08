@@ -27,7 +27,7 @@
                     <Setter Property="Foreground" Value="#D8DBE2" />
                     <Setter Property="Margin" Value="10" />
                     <Setter Property="CornerRadius" Value="10" />
-                    <Setter Property="Width" Value="190"></Setter>
+                    <Setter Property="Width" Value="180"></Setter>
                     <Setter Property="Height" Value="150"></Setter>
                 </Style>
                 <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
@@ -47,7 +47,7 @@
             <Button DockPanel.Dock="Left" x:Name="AuxPrevButton">
                 <i:Icon Value="fa-solid fa-chevron-left"></i:Icon>
             </Button>
-            <Grid Width="800" x:Name="AuxGrid">
+            <Grid Width="750" x:Name="AuxGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
