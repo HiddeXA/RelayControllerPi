@@ -245,6 +245,11 @@ public partial class MainView : UserControl
         {
             AuxPage--;
             RefreshAuxButtons(auxController);
+        }, handledEventsToo: true);  
+        
+        AuxStopButton.AddHandler(Button.PointerReleasedEvent, (sender, e) =>
+        { 
+            auxController.StopAllSound();
         }, handledEventsToo: true);
 
         PartyController partyController = new PartyController(
@@ -264,9 +269,19 @@ public partial class MainView : UserControl
             }
         );
         
-        PartyButton.AddHandler(Button.PointerPressedEvent, (sender, e) => { partyController.Activate();}, handledEventsToo: true);
-        PartyButton.AddHandler(Button.PointerReleasedEvent, (sender, e) => { partyController.Deactivate();}, handledEventsToo: true);
-
+        PartyButton.AddHandler(Button.ClickEvent, (sender, e) =>
+        {
+            if (partyController.Active)
+            {
+                partyController.Deactivate();
+                PartyButton.Background = new SolidColorBrush(Color.Parse("#373F51"));
+            }
+            else
+            {
+                partyController.Activate();
+                PartyButton.Background = new SolidColorBrush(Color.Parse("#00A6FF"));
+            }
+        }, handledEventsToo: true);
     }
     
 }

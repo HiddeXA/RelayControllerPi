@@ -26,7 +26,7 @@ public class AuxController
         {
             Console.WriteLine($"Scanning drive: {drive}");
 
-            string[] mp3Files = Directory.GetFiles(drive, "*.wav", SearchOption.AllDirectories);
+            string[] mp3Files = Directory.GetFiles(drive, "*.mp3", SearchOption.AllDirectories).Concat(Directory.GetFiles(drive, "*.wav", SearchOption.AllDirectories)).ToArray();
 
             foreach (var file in mp3Files)
             {

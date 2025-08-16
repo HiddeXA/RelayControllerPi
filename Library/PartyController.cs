@@ -59,4 +59,16 @@ public class PartyController
             relay.Deactivate();
         }
     }
+
+    public void Toggle()
+    {
+        if (Active)
+        {
+            Deactivate();
+        }
+        else
+        {
+            Activate();
+        }
+    }
 }
